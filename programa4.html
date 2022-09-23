@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas width="600" height="400"></canvas>
+<script>
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+
+    pincel.fillStyle = "lightgrey"
+    pincel.fillRect(0,0,600,400);
+    pincel.fillStyle = "green";
+    function diseniarCincunferencias(x,y,radio) {
+//        pincel.fillStyle = "green";
+        pincel.beginPath();
+        pincel.arc(x,y,radio,0,2*Math.PI);
+        pincel.fill();
+    }
+
+    function limpiarPantalla() {
+        pincel.clearRect(0,0,600,400);
+    }
+
+    var x=20;
+    var final = false;
+    function actualizarPantalla() {
+        limpiarPantalla();
+        diseniarCincunferencias(x,20,10);
+        if (x==580){
+            final=true;
+        }
+        if (x==20){
+            final=false
+        }
+        if (final){
+            x--;
+        }
+        else{
+            x++;
+        }
+    }
+    var colores = ["blue", "red", "green","yellow","black"];
+    var tipocolor=0;
+    pincel.fillStyle = colores[tipocolor];
+    function alterarColorDerecho() {
+        tipocolor++;
+        if (tipocolor<colores.length)
+        {
+            pincel.fillStyle = colores[tipocolor];
+        }
+        else
+        {
+            tipocolor=0;
+            pincel.fillStyle = colores[tipocolor];
+        }
+//        alert("Funcionó "+colores[tipocolor]);
+        return false;
+    }
+    function alterarColorIzquierdo() {
+        tipocolor--;
+        if (tipocolor>=0)
+        {
+            pincel.fillStyle = colores[tipocolor];
+        }
+        else
+        {
+            tipocolor=colores.length-1;
+            pincel.fillStyle = colores[tipocolor];
+        }
+//        alert("Funcionó "+colores[tipocolor]);
+        return false;
+    }
+    pantalla.oncontextmenu = alterarColorDerecho;
+    pantalla.onclick = alterarColorIzquierdo;
+    setInterval(actualizarPantalla,50);
+
+</script>
+</body>
+</html>

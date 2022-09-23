@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas width="600" height="400"></canvas>
+<script>
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+
+    var xAleatorio;
+    var yAleatorio;
+    pincel.fillStyle = "lightgrey"
+    pincel.fillRect(0,0,600,400);
+
+    function diseniarCincunferencias(x,y,radio,color) {
+        pincel.fillStyle = color;
+        pincel.beginPath();
+        pincel.arc(x,y,radio,0,2*Math.PI);
+        pincel.fill();
+    }
+
+    function limpiarPantalla() {
+        pincel.clearRect(0,0,600,400);
+    }
+
+    var x=20;
+    var final = false;
+    function actualizarPantalla() {
+        limpiarPantalla();
+        diseniarCincunferencias(x,20,10);
+        if (x==580){
+            final=true;
+        }
+        if (x==20){
+            final=false
+        }
+        if (final){
+            x--;
+        }
+        else{
+            x++;
+        }
+    }
+
+    function diseniarObjetivo(x,y,radio) {
+        diseniarCincunferencias(x,y,radio+20,"red");
+        diseniarCincunferencias(x,y,radio+10,"white");
+        diseniarCincunferencias(x,y,radio,"red");
+    }
+    function sortearPosicion(maximo) {
+        return Math.floor(Math.random()*maximo);
+    }
+    function automarizarposicion() {
+        xAleatorio = sortearPosicion(540);
+        yAleatorio = sortearPosicion(340);
+        limpiarPantalla();
+        diseniarObjetivo(xAleatorio,yAleatorio,10);
+        console.log(xAleatorio,yAleatorio);
+//        return posicion;
+    }
+    function coordenadasmouse(evento) {
+        var x = evento.pageX-pantalla.offsetLeft;
+        var y = evento.pageY-pantalla.offsetTop;
+        console.log("posicion x:"+x,"posicion y:"+y);
+        diseniarCincunferencias(x,y,5,"blue");
+        if (x>=xAleatorio-10&&x<=xAleatorio+10){
+            if (y>=yAleatorio-10&&y<=yAleatorio+10){
+                alert("Acertaste en el Blanco");
+            }
+        }
+    }
+
+    setInterval(automarizarposicion,500);
+    pantalla.onclick = coordenadasmouse;
+</script>
+</body>
+</html>

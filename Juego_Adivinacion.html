@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function saltarlinea() {
+        document.write("<br>")
+    }
+    function imprimir(palabra) {
+        document.write("<big>"+palabra+"</big>");
+        saltarlinea();
+    }
+    var intentos=3;
+    var numeroPensado = parseInt(Math.random()*10);
+
+    while (intentos>0)
+    {
+        var numeroLanzado = parseInt(prompt("Ingrese un numero entre 0-10"));
+
+        if (numeroPensado == numeroLanzado)
+        {
+            alert("Usted acerto");
+            break;
+        }
+        else
+//    if (numeroPensado != numeroLanzado)
+        {
+            alert("Usted erro, el numero pensado era: "+numeroPensado);
+            intentos--;
+        }
+    }
+    imprimir("Vuelva a jugar")
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>PROGRAMA CALCULAR IMC</h1>
+<script>
+
+    function saltarlinea() {
+        document.write("<br><br><br><hr><br><br>")
+    }
+    function imprimir(palabra) {
+        document.write("<big>"+palabra+"</big>");
+        saltarlinea();
+    }
+    function calcularimc(peso, altura){
+        return peso/(altura*altura);
+//        imprimir("El imc de "+nombre+" es: "+imc);
+    }
+    function solicitarPeso() {
+        return prompt("Escribir su Peso");
+    }
+    function solicitarAltura() {
+        return prompt("Escribir su Altura");
+    }
+    function solicitarNombre() {
+        return prompt("Escribir su Nombre");
+    }
+    var nombre = solicitarNombre();
+    var peso = solicitarPeso();
+    var altura = solicitarAltura();
+    var imc = calcularimc(peso,altura);
+    imprimir(nombre +" su indice de masa corporal es: "+ imc);
+
+//    var imcMarwin = calcularimc(75, 1.68);
+//    var imcSu = calcularimc(50, 1.48);
+//
+//    imprimir("el promedio de masa corporal de MArwin y Su es: "+(imcMarwin+imcSu)/2);
+
+//    imcMarwin = calcularimc("Marwin", 75, 1.68);
+//    imprimir("El imc de Marwin es: "+imcMarwin);
+//
+//    imcJuan = calcularimc("Juan", 50, 1.48);
+//    imprimir("El imc de Juan es: "+imcJuan);
+
+
+</script>
+</body>
+</html>
+

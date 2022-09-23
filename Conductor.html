@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<meta charset="UTF-8">
+<script>
+    function saltarLinea() {
+        document.write("<br>");
+    }
+
+    function imprimir(frase) {
+        document.write(frase);
+        saltarLinea();
+    }
+
+    var edad = parseInt(prompt("¿Cuál es tu edad?"));
+    var tieneLicencia = prompt("¿Tienes licencia? Responde S o N");
+
+    if (edad>=18 && tieneLicencia.toUpperCase()=="S")
+    {
+        imprimir("Puedes conducir");
+    }
+    else{
+        imprimir("No puede conducir");
+    }
+
+</script>
+</body>
+</html>
